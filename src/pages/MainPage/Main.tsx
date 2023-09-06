@@ -4,7 +4,6 @@ import useInput from '../../hooks/useInput';
 import useGetList from '../../hooks/useGetList';
 
 function Main() {
-	console.log('렌더링');
 	const [input, inputValueChange] = useInput('');
 	const [data] = useGetList(input);
 

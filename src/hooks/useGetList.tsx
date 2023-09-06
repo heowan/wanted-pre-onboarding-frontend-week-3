@@ -1,20 +1,16 @@
 import { useEffect, useState } from 'react';
-import { getRecommendationList } from '../api/Api';
-import sliceData from '../utils/helper/sliceData';
-import { MAX_LIST_NUM } from '../utils/constants/constants';
+import { getData } from '../utils/helper/getData';
+import { SickType } from '../utils/types/Sick.interface';
 
 function useGetList(input: string) {
-	const [data, setData] = useState([]);
+	const [data, setData] = useState<SickType[]>([]);
 
 	useEffect(() => {
-		getRecommendationList(input)
-			.then(res => {
-				setData(res.data);
-			})
-			.catch(error => console.log(error));
-	}, [input, setData]);
+		const callApiDelay = setTimeout(() => getData(input, setData), 400);
+		return () => clearTimeout(callApiDelay);
+	}, [input]);
 
-	return [sliceData(data, MAX_LIST_NUM)];
+	return [data];
 }
 
 export default useGetList;
