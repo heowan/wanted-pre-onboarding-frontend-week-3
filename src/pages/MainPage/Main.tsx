@@ -1,10 +1,11 @@
 import styles from './Main.module.scss';
 import RecommendationContainer from '../../components/recommendation/RecommendationContainer';
 import useInput from '../../hooks/useInput';
+import useGetList from '../../hooks/useGetList';
 
 function Main() {
-	console.log('렌더링');
 	const [input, inputValueChange] = useInput('');
+	const [data] = useGetList(input);
 
 	return (
 		<div className={styles.container}>
@@ -18,7 +19,7 @@ function Main() {
 				/>
 				<button className={styles.btn}>검색</button>
 			</div>
-			{input !== '' ? <RecommendationContainer /> : undefined}
+			{input !== '' && <RecommendationContainer data={data} />}
 		</div>
 	);
 }
