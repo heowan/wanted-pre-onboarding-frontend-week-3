@@ -1,27 +1,42 @@
-import SearchIcon from '../../assets/search.svg';
 import styles from './RecommendationContainer.module.scss';
+import RecommendationList from './RecommendationList';
+import { SickType } from '../../utils/types/Sick.interface';
+
+const data: SickType[] = [
+	{
+		sickCd: 'A06',
+		sickNm: '아메바증',
+	},
+	{
+		sickCd: 'A31',
+		sickNm: '기타 형태의 마이코박테리아에 의한 감염',
+	},
+	{
+		sickCd: 'A32',
+		sickNm: '리스테리아병',
+	},
+	{
+		sickCd: 'A33',
+		sickNm: '신생아 파상풍',
+	},
+	{
+		sickCd: 'A36',
+		sickNm: '디프테리아',
+	},
+	{
+		sickCd: 'A43',
+		sickNm: '노카르디아증',
+	},
+];
 
 function RecommendationContainer() {
 	return (
 		<div className={styles.container}>
 			<p className={styles.subTitle}>추천 검색어</p>
 			<ul className={styles.list}>
-				<li className={styles.listItem}>
-					<img src={SearchIcon} className={styles.searchIcon} alt="검색아이콘" />
-					<p className={styles.text}>간세포암</p>
-				</li>
-				<li className={styles.listItem}>
-					<img src={SearchIcon} className={styles.searchIcon} alt="검색아이콘" />
-					<p className={styles.text}>갑상선암종</p>
-				</li>
-				<li className={styles.listItem}>
-					<img src={SearchIcon} className={styles.searchIcon} alt="검색아이콘" />
-					<p className={styles.text}>뼈암</p>
-				</li>
-				<li className={styles.listItem}>
-					<img src={SearchIcon} className={styles.searchIcon} alt="검색아이콘" />
-					<p className={styles.text}>구강암</p>
-				</li>
+				{data.map(listItem => (
+					<RecommendationList key={listItem.sickCd} listItem={listItem} />
+				))}
 			</ul>
 		</div>
 	);
