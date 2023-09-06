@@ -1,8 +1,8 @@
 import { Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { ROUTES } from './utils/constants/constants';
-import Main from './pages/MainPage/Main';
-import NotFound from './pages/NotFoundPage/NotFound';
+import Main from './pages/mainPage/Main';
+import NotFound from './pages/notFoundPage/NotFound';
 import LoadingSpinner from './components/loadingSpinner/LoadingSpinner';
 
 function App() {

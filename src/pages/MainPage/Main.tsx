@@ -1,4 +1,5 @@
 import styles from './Main.module.scss';
+import RecommendationContainer from '../../components/recommendation/RecommendationContainer';
 
 function Main() {
 	return (
@@ -7,7 +8,7 @@ function Main() {
 				<input className={styles.input} type="text" placeholder="질환명을 입력해주세요." />
 				<button className={styles.btn}>검색</button>
 			</div>
-			<div>추천검색어</div>
+			<RecommendationContainer />
 		</div>
 	);
 }
