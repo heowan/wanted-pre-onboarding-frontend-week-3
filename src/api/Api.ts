@@ -1,16 +1,21 @@
-import axios from 'axios';
 import { URL } from '../utils/constants/constants';
 
-const instance = axios.create({
-	baseURL: URL.BASEURL,
-});
-
 export const getRecommendationList = async (query: string) => {
+	const url = `${URL.BASEURL}/?q=${query}`;
+
 	console.info('calling api');
-	const response = await instance.get(`/`, {
-		params: {
-			q: query,
-		},
-	});
-	return response;
+
+	try {
+		const response = await fetch(url);
+		const jsonData = await response.json();
+
+		if (!response.ok) {
+			throw new Error(`HTTP error! Status: ${response.status}`);
+		}
+
+		return jsonData;
+	} catch (error) {
+		console.error('Error:', error);
+		throw error;
+	}
 };
